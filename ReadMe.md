@@ -5,8 +5,8 @@
 
 * Lib:
 
-* Video/ GStreamer-based video library for Processing. 
-* Sound/ Sound library based on MethCla for Processing. 
+Video/ GStreamer-based video library for Processing. 
+Sound/ Sound library based on MethCla for Processing. 
 
 Ardion(Firmata)/Controls Arduino boards running the Firmata firmwar 
 
@@ -15,6 +15,7 @@ Ardion(Firmata)/Controls Arduino boards running the Firmata firmwar
 * A0 = 訊號
 * G = GND( 接地)
 * V = 5V(電源)
+
 
 ## 教學 
 
