@@ -1,5 +1,7 @@
 import processing.video.*;
+import processing.serial.*;
 Movie movie;
+Serial port; 
 
 //import processing.sound.*;
 //SoundFile soundfile;
@@ -23,7 +25,7 @@ void setup(){
   frameRate(24);
   offSetY = int(0 - height*0.35); ///offset
   offSetScale = int(height*1.7); ///this
-
+  port = new Serial( this, Serial.list()[3], 9600 ) ;
 }
 void movieEvent(Movie movie){
   movie.read();
@@ -32,12 +34,8 @@ void movieEvent(Movie movie){
 void draw(){
   
   image(movie, 0,  offSetY, width, offSetScale);
-  for(int i = 0; i<5; i++){ 
-    if (onClip[i] != false){ 
-      generateClip(i);
-    }
-} //<>//
-
+  for(int i = 0; i<5; i++) if (onClip[i] != false) generateClip(i);
+ //<>//
 }
 
 void generateClip(int clipId){
