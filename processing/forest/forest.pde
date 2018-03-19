@@ -5,15 +5,14 @@ Movie movie;
 //SoundFile soundfile;
 
 int playClip = 1;
-boolean onClip1 = false;
-boolean onClip2 = false;
-boolean onClip3 = false;
-boolean onClip4 = false;
-boolean onClip5 = false;
-boolean onClip6 = false;
-boolean onClip7 = false;
-boolean onClip8 = false;
-boolean onClip9 = false;
+
+String[] clipName = {"deer", "end", "flower", "grandmother", "water"}; //prefix name 
+int[] clipImg = new int[9]; // 
+int[] clipSpace = {3, 3, 3, 2, 2}; // 
+boolean[] onClip = {false, false, false, false, false};
+int[] clipCumFrames = {510, 1050, 390, 1080, 540, 510, 510, 510, 510}; //How many frame for each animation
+int currentFrame = 0;
+
 int numFrames1 = 510;
 int numFrames2 = 1050;
 int numFrames3 = 390;
@@ -48,72 +47,43 @@ void setup(){
   size(1280, 720);
   movie = new Movie(this, "loop.mov");
   movie.loop();
-  
+  frameRate(30);
 
-
-  frameRate(24);
 }
 void movieEvent(Movie movie){
   movie.read();
 }
 
 void draw(){
-    //background(255,255,255);
+
   image(movie, 0, 0);
-  if(playClip == 1){
-    String imageName = "deer" + nf(currentFrame1, 4) + ".png";
-      images1[currentFrame1] = loadImage(imageName);
-  image(images1[currentFrame1], 0, 0); //<>//
-   images1[currentFrame1] = null;
-  currentFrame1 += 3;
-    if (currentFrame1 >= images1.length) {
-      currentFrame1 = 0;
-      playClip += 1;
-      }
-  } else if(playClip == 2){
-      String imageName2 = "end" + nf(currentFrame2, 4) + ".png";
-    images2[currentFrame2] = loadImage(imageName2);
-  image(images2[currentFrame2], 0, 0);
-      images2[currentFrame2] = null;
-  currentFrame2 += 4;
+  for(int i = 0; i<5; i++){ 
+    if (onClip[i] != false){ 
+      generateClip(i);
+    }
+} //<>//
 
-    if (currentFrame2 >= images2.length) {
-      currentFrame2 = 0;
-      playClip += 1;
-      }
-  } else if(playClip == 3){
-    String imageName3 = "flower" + nf(currentFrame3, 4) + ".png";
-    images3[currentFrame3] = loadImage(imageName3);
-  image(images3[currentFrame3], 0, 0);
-      images3[currentFrame3] = null;
-  currentFrame3 += 3;
+}
 
-    if (currentFrame3 >= images3.length) {
-      currentFrame3 = 0;
-      playClip += 1;
+void generateClip(int clipId){
+  String imageName = clipName[clipId] + nf(currentFrame, 4) + ".png";
+  PImage[] images = new PImage[clipCumFrames[clipId]];
+  images[currentFrame] = loadImage(imageName);
+  println(currentFrame + "," + imageName);
+  image(movie, 0, 0);
+  image(images[currentFrame], 0, 0);
+  images[currentFrame] = null;
+  currentFrame += clipSpace[clipId];
+    if (currentFrame >= clipCumFrames[clipId]) {
+      currentFrame = 0;
+      onClip[clipId] = false;    
       }
-  } else if(playClip == 4){
-     String imageName4 = "grandmother" + nf(currentFrame4, 4) + ".png";
-    images4[currentFrame4] = loadImage(imageName4);
-  image(images4[currentFrame4], 0, 0);
-      images4[currentFrame4] = null;
-  currentFrame4 += 4;
+ 
+}
 
-    if (currentFrame4 >= images4.length) {
-      currentFrame4 = 0;
-      playClip += 1;
-      }
-  } else if(playClip == 5){
-     String imageName5 = "water" + nf(currentFrame5, 4) + ".png";
-    images5[currentFrame5] = loadImage(imageName5);
-  image(images5[currentFrame5], 0, 0);
-      images5[currentFrame5] = null;
-  currentFrame5 += 3;
-
-    if (currentFrame5 >= images5.length) {
-      currentFrame5 = 0;
-      playClip = 1;
-      }
-  }
-  
+void mousePressed(){
+  for(int i = 0; i<5; i++) onClip[i] = false;
+  int ranNum = int(random(0,5));
+  onClip[ranNum] = true;
+  currentFrame = 0;
 }
