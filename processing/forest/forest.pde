@@ -30,8 +30,7 @@ void setup(){
   
   offSetY = int(0 - height*0.35); ///v offset
   offSetScale = int(height*1.7); ///v this
-  
-  port = new Serial( this, Serial.list()[3], 9600 ) ; /// 0 - 7
+  port = new Serial( this, Serial.list()[0], 9600 ) ; /// 0 - 7
 }
 
 void movieEvent(Movie movie){
