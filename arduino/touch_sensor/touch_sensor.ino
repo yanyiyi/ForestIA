@@ -50,15 +50,14 @@ void loop() {
     Serial.println("6");
     }
   if(digitalRead(sig_pin7)){
-    }else{
-    digitalWrite(led_pin,HIGH);
-    Serial.println("7");}
-  if(digitalRead(sig_pin8)){
-    }else{
-    digitalWrite(led_pin,HIGH);
-    Serial.println("8");}
+     digitalWrite(led_pin,HIGH);
+    Serial.println("7");
+   }
+   if(digitalRead(sig_pin8)){
+      digitalWrite(led_pin,HIGH);
+       Serial.println("8");
+   }
   if(digitalRead(sig_pin9)){
-    }else{
     digitalWrite(led_pin,HIGH);
     Serial.println("9");}  
     
