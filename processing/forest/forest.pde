@@ -1,5 +1,6 @@
 import processing.video.*;
 import processing.serial.*;
+
 Movie movie;
 Serial port; 
 
@@ -7,16 +8,16 @@ Serial port;
 //SoundFile soundfile;
 
 int playClip = 1;
-int aniNumber = 5; // v now how many animation 
+int aniNumber = 6; // v now how many animation 
 
-String[] clipName = {"deer", "end", "flower", "grandmother", "water" }; // v cprefix name 
+String[] clipName = {"deer", "end", "flower", "grandmother", "water", "tree" }; // v cprefix name 
 int[] clipImg = new int[9]; // 
-int[] clipSpace = {4, 4, 4, 3, 3,3}; // v slow fast
+int[] clipSpace = {4, 4, 4, 3, 4, 3}; // v slow fast
 boolean[] onClip = {false, false, false, false, false, false, false, false, false};
-int[] clipCumFrames = {510, 1050, 390, 540, 540, 510, 510, 510, 510}; //v How many frame for each animation
+int[] clipCumFrames = {510, 1050, 390, 540, 540, 450, 510, 510, 510}; //v How many frame for each animation
 int currentFrame = 0;
 int[] sensorThread = new int[9]; 
-int sensorThreadMax = 500; //// v  MO Mo Ta Time 
+int sensorThreadMax = 200; //// v  MO Mo Ta Time 
 int sensorThreadMaxOri = sensorThreadMax;
 
 int offSetY = 0;
@@ -30,7 +31,7 @@ void setup(){
   
   offSetY = int(0 - height*0.35); ///v offset
   offSetScale = int(height*1.7); ///v this
-  port = new Serial( this, Serial.list()[0], 9600 ) ; /// 0 - 7
+  port = new Serial(this, Serial.list()[0], 9600); /// 0 - 7
 }
 
 void movieEvent(Movie movie){
