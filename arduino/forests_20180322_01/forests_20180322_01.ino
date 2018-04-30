@@ -67,7 +67,6 @@ void loop() {
         digitalWrite(led_pin, HIGH);
         Serial.println("6");
         break;
-
       case 7:
         digitalWrite(led_pin, HIGH);
         Serial.println("7");
@@ -82,7 +81,6 @@ void loop() {
         digitalWrite(led_pin, HIGH);
         Serial.println("9");
         break;
-    
       case 10:
         for(n=3;n<=11;n++){
         digitalWrite(led_pin, LOW);
